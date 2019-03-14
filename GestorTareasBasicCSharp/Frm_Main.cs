@@ -32,6 +32,7 @@ namespace GestorTareasBasicCSharp
             this.txtTask.Text = "";
 
             this.lstTask.Enabled = this.lstTask.Items.Count > 0;
+            this.lstTask.SelectedIndex = -1;
         }
 
         private void AddNewTask()
@@ -51,18 +52,16 @@ namespace GestorTareasBasicCSharp
             {
                 this.lstTask.Items.Add(this.txtTask.Text);
                 this.btnAdd.Enabled = true;
+                Resec();
             } else {
                 this.lstTask.Items[this.lstTask.SelectedIndex] = txtTask.Text;
             }
-            
-            Resec();
         }
 
         private void LoadSelectedTask()
         {
             if (lstTask.SelectedIndex >= 0 && lstTask.SelectedIndex < lstTask.Items.Count){
                 this.txtTask.Text = lstTask.Items[lstTask.SelectedIndex].ToString();
-                this.btnAdd.Enabled = false;
                 this.btnCancel.Enabled = true;
                 this.btnSave.Enabled = true;
                 this.btnDelete.Enabled = true;
@@ -74,12 +73,18 @@ namespace GestorTareasBasicCSharp
 
         private void DeleteTask()
         {
-
+            if (MessageBox.Show("¿Esta seguro de eliminar el items?", "Confirmar eliminacion", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                if (lstTask.SelectedIndex >= 0 && lstTask.SelectedIndex < lstTask.Items.Count)
+                {
+                    this.lstTask.Items.RemoveAt(this.lstTask.SelectedIndex);
+                }
+            }
         }
 
         private void CancelTask()
         {
-
+            this.Resec();
         }
 
 
