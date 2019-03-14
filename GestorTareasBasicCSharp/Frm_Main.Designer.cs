@@ -94,6 +94,7 @@
             this.txtTask.Name = "txtTask";
             this.txtTask.Size = new System.Drawing.Size(492, 20);
             this.txtTask.TabIndex = 3;
+            this.txtTask.TextChanged += new System.EventHandler(this.txtTask_TextChanged);
             // 
             // lstTask
             // 
@@ -162,6 +163,7 @@
             this.Name = "Frm_Main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Administrador de Tareas";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Frm_Main_FormClosing);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Frm_Main_KeyPress);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
